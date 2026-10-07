@@ -1,0 +1,1179 @@
+/* =========================================================
+   薛嘉耀个人影像作品集 — 真实牛皮纸档案风设计系统
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --paper: #f7f5f0;
+  --ink: #1a1a1a;
+  --ink-light: #4a4a4a;
+  --red-seal: #a83232;
+  --kraft: #c9a878;
+  --kraft-dark: #8b6f4e;
+  --tape: rgba(245, 240, 230, 0.78);
+  --shadow: rgba(30, 20, 10, 0.22);
+  --radius: 2px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+  color: var(--ink);
+  background: var(--kraft);
+  overflow: auto;
+  min-height: 100vh;
+}
+
+body.category-page {
+  overflow: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   HERO 封面：直接使用 hero底图.jpg + hero标签.png
+   #hero 自身就是背景图，不依赖子元素，确保稳定渲染
+   ========================================================= */
+#hero {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 10vh;
+  background-image: url('../assets/images/hero-kraft-bg.jpg?v=4');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #b08d5f; /* 图加载前的兜底色 */
+}
+
+.hero-label-wrapper {
+  position: relative;
+  z-index: 2;
+  width: min(460px, 30vw);
+  margin-top: 2vh;
+  animation: labelSnap 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s both;
+}
+
+.hero-label {
+  width: 100%;
+  height: auto;
+}
+
+/* 标签“啪”地吸附：从上方飞入 + 回弹落定，最终微微右倾匹配参考 */
+@keyframes labelSnap {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1.45) rotate(-10deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(12px) scale(0.92) rotate(4deg);
+  }
+  70% {
+    transform: translateY(-6px) scale(1.04) rotate(-0.5deg);
+  }
+  85% {
+    transform: translateY(3px) scale(0.98) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(1.5deg);
+  }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  text-align: center;
+  color: var(--ink-light);
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: 0.45;
+  animation: hintPulse 2.5s ease-in-out infinite;
+}
+
+.scroll-hint span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Space Mono', monospace;
+}
+
+.scroll-arrow {
+  width: 1px;
+  height: 28px;
+  background: var(--ink-light);
+  margin: 0 auto;
+  position: relative;
+}
+
+.scroll-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid var(--ink-light);
+  border-bottom: 1px solid var(--ink-light);
+  transform: rotate(45deg);
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+}
+
+/* =========================================================
+   主内容区（滚动后从 hero 下方自然出现）
+   ========================================================= */
+#mainContent {
+  position: relative;
+  z-index: 15;
+  margin-top: 100vh;
+  background: url('../assets/images/bg-4.jpg?v=5') center top / cover no-repeat fixed;
+}
+
+.section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 8vw;
+  margin-bottom: -3px;
+  transform: translateZ(0);
+}
+
+/* 概况区使用带白纸的底图 5.png（随内容滚动，像一张铺在牛皮纸上的白纸） */
+.profile-section {
+  background-image: url('../assets/images/bg-5.jpg?v=5');
+  background-color: #c4a88a;
+  background-attachment: scroll;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 白色纸张内容卡片 */
+.paper-card {
+  background: rgba(247, 245, 240, 0.94);
+  padding: 48px 42px;
+  box-shadow: 0 12px 50px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.paper-card::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  pointer-events: none;
+}
+
+.tape {
+  position: absolute;
+  background: var(--tape);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  opacity: 0.85;
+}
+
+.tape-top {
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 140px;
+  height: 28px;
+}
+
+.tape-left {
+  left: -14px;
+  top: 40px;
+  width: 28px;
+  height: 90px;
+  transform: rotate(2deg);
+}
+
+.tape-right {
+  right: -14px;
+  top: 60px;
+  width: 28px;
+  height: 70px;
+  transform: rotate(-1.5deg);
+}
+
+/* =========================================================
+   标题系统
+   ========================================================= */
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(44px, 7vw, 92px);
+  letter-spacing: 6px;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+
+.section-title-en {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(12px, 1.4vw, 15px);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 42px;
+  display: block;
+}
+
+/* =========================================================
+   个人档案区
+   ========================================================= */
+.profile-section .section-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.profile-left {
+  position: relative;
+}
+
+.profile-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(52px, 8vw, 110px);
+  line-height: 1;
+  letter-spacing: 8px;
+  margin-bottom: 10px;
+}
+
+.profile-name-en {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--ink-light);
+  margin-bottom: 28px;
+}
+
+.profile-meta {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--ink-light);
+  margin-bottom: 24px;
+}
+
+.profile-meta strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.profile-qr {
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  padding: 6px;
+  border: 1px solid rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+.profile-right p {
+  font-size: 16px;
+  line-height: 2.1;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.profile-right p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight {
+  background: linear-gradient(transparent 60%, rgba(168, 50, 50, 0.15) 60%);
+  padding: 0 2px;
+}
+
+/* =========================================================
+   案例展示四宫格（强制 2x2）
+   ========================================================= */
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.work-card {
+  position: relative;
+  /* 覆盖底图，比例归 16:9 */
+  aspect-ratio: 16 / 9;
+  background-color: #232323;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.work-card:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.18);
+}
+
+.work-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.25) 45%, transparent 70%);
+  z-index: 1;
+}
+
+.work-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.work-card-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.work-card-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  color: #fff;
+  letter-spacing: 3px;
+  line-height: 1.2;
+}
+
+.work-card-en {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  margin-top: 6px;
+  letter-spacing: 2px;
+}
+
+/* =========================================================
+   能力定位
+   ========================================================= */
+.skill-block {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+  align-items: start;
+}
+
+.skill-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 42px;
+  color: var(--red-seal);
+  opacity: 0.7;
+  line-height: 1;
+}
+
+.skill-body h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.skill-body p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ink-light);
+}
+
+/* =========================================================
+   联系方式
+   ========================================================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.contact-card {
+  background: rgba(247, 245, 240, 0.94);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+}
+
+.contact-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-light);
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.contact-value {
+  font-size: 16px;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.resume-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 24px;
+  border: 1px solid var(--ink);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transition: background 0.25s, color 0.25s;
+}
+
+.resume-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* =========================================================
+   感谢页
+   ========================================================= */
+.thank-section {
+  text-align: center;
+}
+
+.thank-section h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 200;
+  font-size: clamp(32px, 5vw, 72px);
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--ink);
+  margin-bottom: 26px;
+}
+
+.thank-section p {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  opacity: 0.85;
+}
+
+/* =========================================================
+   子页面通用 —— 背景固定用 5.png
+   ========================================================= */
+.category-page {
+  background: url('../assets/images/bg-4.jpg?v=6') center center / cover no-repeat fixed;
+  min-height: 100vh;
+  padding: 10vh 6vw 8vh;
+}
+
+.back-btn {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 100;
+  background: rgba(247, 245, 240, 0.95);
+  padding: 10px 18px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease;
+}
+
+.back-btn:hover {
+  transform: translateX(-4px);
+}
+
+.category-header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding-top: 30px;
+}
+
+.category-header h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(42px, 7vw, 86px);
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+
+.category-header .category-en {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--ink-light);
+}
+
+/* 子页面作品四宫格（强制 2x2） */
+.works-grid-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.work-item {
+  position: relative;
+  background: rgba(247, 245, 240, 0.93);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  box-shadow: 0 12px 45px rgba(0,0,0,0.14);
+  transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+  transform: translateY(-5px) rotate(-0.3deg);
+}
+
+.work-item img,
+.work-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.work-item-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 24px 20px 18px;
+  background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
+  color: #fff;
+}
+
+.work-item-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(20px, 2.8vw, 30px);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.work-item-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+.award-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--red-seal);
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.work-item.still-only {
+  aspect-ratio: 16 / 11;
+}
+
+/* =========================================================
+   子页面 · 作品区块（单一作品完整静帧展示）
+   ========================================================= */
+.work-block {
+  max-width: 1200px;
+  margin: 0 auto 56px;
+  background: rgba(247, 245, 240, 0.94);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.16);
+  position: relative;
+  padding: 34px 34px 30px;
+}
+
+/* 顶部区：编号 + 标题 + 元信息 */
+.work-block-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.work-block-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #fff;
+  background: var(--ink);
+  padding: 5px 12px;
+}
+
+.work-block-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(24px, 3.5vw, 38px);
+  letter-spacing: 2px;
+}
+
+/* 剧名旁的小字备注（赞助 / 入围 / 获奖） */
+.work-block-note {
+  font-size: 12px;
+  line-height: 1.65;
+  letter-spacing: 0.5px;
+  color: var(--ink-light);
+  border-left: 2px solid rgba(168, 50, 50, 0.45);
+  padding-left: 12px;
+  max-width: 340px;
+}
+
+.work-block-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  color: var(--ink-light);
+  margin-left: auto;
+}
+
+.work-block-award {
+  background: var(--red-seal);
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+}
+
+/* 静帧网格：封面占整行，其余按列排 */
+.work-stills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.work-stills figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: #e8e2d8;
+  aspect-ratio: 16 / 10;
+}
+
+/* 封面图：占满整行 */
+.work-stills figure.cover {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
+.work-stills img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.work-stills figure:hover img {
+  transform: scale(1.04);
+}
+
+.work-stills figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 10px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+/* 封面可点击跳转原片 */
+.work-stills figure.playable { cursor: pointer; }
+.work-stills figure.playable .cover-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: block;
+}
+.work-stills figure.playable .cover-link:hover img { transform: scale(1.04); }
+.work-stills figure.playable .cover-tape {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 92px;
+  height: 26px;
+  z-index: 4;
+  transform: rotate(-5deg);
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0) 42%, rgba(0,0,0,0.08)),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.07) 0 2px, transparent 2px 4px),
+    rgba(226, 214, 188, 0.92);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.22), inset 0 0 3px rgba(255,255,255,0.45);
+  border-left: 2px dashed rgba(120,110,90,0.5);
+  border-right: 2px dashed rgba(120,110,90,0.5);
+}
+.work-stills figure.playable .cover-hint {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 4;
+  padding: 10px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0));
+  text-decoration: underline;
+  pointer-events: none;
+}
+
+/* 一排五个 9:16 竖版静帧（无单独封面大图） */
+.work-stills.still-row {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.work-stills.still-row figure {
+  aspect-ratio: 9 / 16;
+}
+
+/* 竖版窄列：胶带与提示文字等比缩小 */
+.work-stills.still-row figure.playable .cover-tape {
+  top: 10px;
+  right: 10px;
+  width: 66px;
+  height: 20px;
+  transform: rotate(-6deg);
+}
+.work-stills.still-row figure.playable .cover-hint {
+  padding: 8px 8px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* 2.35:1 静帧按原比例排布（整组或单张封面） */
+.work-stills.r235 figure,
+.work-stills figure.r235 {
+  aspect-ratio: 2.35 / 1;
+}
+
+/* 一行三张 / 一行四张 */
+.work-stills.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.work-stills.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* 视频占位区块（用户后续替换成 <video>） */
+.work-video-slot {
+  margin-top: 20px;
+  aspect-ratio: 16 / 9;
+  background: #d8d0c2;
+  border: 1px dashed rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-light);
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+.work-video-slot video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* 响应式：窄屏单列 */
+@media (max-width: 768px) {
+  .work-stills { grid-template-columns: 1fr; }
+  .work-stills.cols-3,
+  .work-stills.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .work-stills figure.cover { aspect-ratio: 16 / 10; }
+  .work-stills.r235 figure,
+  .work-stills figure.cover.r235 { aspect-ratio: 2.35 / 1; }
+  .work-stills.still-row { grid-template-columns: repeat(2, 1fr); }
+  .work-block { padding: 22px 18px; }
+  .work-block-meta { margin-left: 0; width: 100%; }
+}
+
+
+/* AIGC 工作流截图区 */
+.workflow-strip {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.workflow-item {
+  aspect-ratio: 1;
+  background: rgba(247, 245, 240, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--ink-light);
+  border: 1px dashed rgba(0,0,0,0.15);
+}
+
+/* =========================================================
+   响应式
+   ========================================================= */
+
+/* 手机竖屏：使用专用竖版背景，标签放大 */
+@media (max-width: 768px) and (orientation: portrait) {
+  #hero {
+    background-image: url('../assets/images/hero-kraft-bg-portrait.jpg?v=5');
+    background-position: center top;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .hero-label-wrapper {
+    width: min(78vw, 420px);
+    margin-top: 0;
+  }
+
+  .scroll-hint {
+    bottom: 14px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile-section .section-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .works-grid,
+  .works-grid-page {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .paper-card {
+    padding: 32px 24px;
+  }
+
+  .workflow-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-label-wrapper {
+    width: min(320px, 58vw);
+  }
+
+  .section {
+    padding: 8vh 5vw;
+  }
+
+  .works-grid,
+  .works-grid-page {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .work-card {
+    padding: 20px;
+  }
+
+  .work-card-title {
+    font-size: 22px;
+  }
+
+  .category-page {
+    padding: 8vh 4vw;
+  }
+}
+
+/* =========================================================
+   爆款展示：左 1/3 文字 + 右 2/3 扇形堆叠数据截图
+   ========================================================= */
+.hit-section {
+  overflow-x: clip;
+}
+
+/* 给右侧扇形留出更宽的舞台，同时保证不和左侧文字重叠 */
+.hit-section .section-inner {
+  max-width: 1340px;
+}
+
+.hit-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+/* 左栏留出舒适宽度，文字恢复舒展的排版 */
+.hit-card {
+  padding: 30px 26px;
+}
+
+.hit-sub {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.hit-card p {
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.hit-stats {
+  list-style: none;
+  margin: 20px 0 18px;
+}
+
+.hit-stats li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding-bottom: 9px;
+  margin-bottom: 9px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.18);
+}
+
+.hit-stats li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.hit-stats strong {
+  font-family: 'Space Mono', monospace;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--red-seal);
+  letter-spacing: 1px;
+}
+
+.hit-stats span {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: var(--ink-light);
+}
+
+.hit-note {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin-bottom: 12px;
+}
+
+.hit-note:last-child {
+  margin-bottom: 0;
+}
+
+/* 扇形排布：四张沿弧线展开、彼此不遮挡，数据完整可见 */
+.fan-stack {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(10px, 1.6vw, 22px);
+  padding: 18px 0 24px;
+}
+
+.fan-card {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 230px;
+  aspect-ratio: 1206 / 2015;
+  margin: 0;
+  overflow: hidden;
+  background: #efe9de;
+  border: 5px solid #f8f5ef;
+  border-radius: 4px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+  transform-origin: 50% 100%;
+  transform: translateY(var(--y, 0px)) rotate(var(--rot, 0deg));
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.fan-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 非手机比例（近方形）的截图：完整显示，不裁切数据 */
+.fan-card.fit img {
+  object-fit: contain;
+  background: #f4f0e8;
+}
+
+.fan-card figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 10px 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+/* 弧线：外侧卡片略低、倾角更大，中间两张挺立 */
+.fan-card:nth-child(1) { --rot: -5deg;  --y: 18px; }
+.fan-card:nth-child(2) { --rot: -1.7deg; --y: 0px; }
+.fan-card:nth-child(3) { --rot: 1.7deg; --y: 0px; }
+.fan-card:nth-child(4) { --rot: 5deg;   --y: 18px; }
+.fan-card:nth-child(5) { --rot: 8deg;   --y: 36px; }
+.fan-card:nth-child(6) { --rot: 11deg;  --y: 56px; }
+
+.fan-card:hover {
+  z-index: 5;
+  transform: translateY(calc(var(--y, 0px) - 14px)) rotate(var(--rot, 0deg)) scale(1.052);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.32);
+}
+
+/* 响应式 */
+@media (max-width: 1200px) {
+  .hit-layout {
+    grid-template-columns: 215px 1fr;
+    gap: 24px;
+  }
+
+  .fan-stack {
+    gap: 12px;
+  }
+
+  .fan-card {
+    max-width: 205px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hit-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .fan-stack {
+    gap: 12px;
+    padding: 14px 0 18px;
+  }
+
+  .fan-card {
+    max-width: 200px;
+  }
+
+  /* 单列布局下文字栏变宽，数据行恢复数字+说明并排 */
+  .hit-stats li {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .hit-stats strong {
+    min-width: 84px;
+  }
+}
+
+/* =========================================================
+   iOS Safari 兼容：它不支持 background-attachment: fixed，
+   保留会导致背景错位/跳帧，这里改回随页面滚动
+   ========================================================= */
+@supports (-webkit-touch-callout: none) {
+  .section,
+  #mainContent {
+    background-attachment: scroll;
+  }
+}
+
+/* 手机竖屏：爆款展示改 2×2 四宫格，卡片放大、数据说明保留 */
+@media (max-width: 520px) {
+  /* 收紧卡片内边距，把宽度让给数据截图 */
+  .hit-card {
+    padding: 22px 14px;
+  }
+
+  .fan-stack {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px 0 16px;
+    align-items: end;
+  }
+
+  /* 网格排布下取消扇形倾角，四张对齐、互不遮挡 */
+  .fan-stack .fan-card:nth-child(1),
+  .fan-stack .fan-card:nth-child(2),
+  .fan-stack .fan-card:nth-child(3),
+  .fan-stack .fan-card:nth-child(4) {
+    --rot: 0deg;
+    --y: 0px;
+  }
+
+  .fan-card {
+    width: 100%;
+    max-width: 100%;
+    border-width: 4px;
+  }
+
+  /* 恢复数据说明，字号按小屏重新调整 */
+  .fan-card figcaption {
+    display: block;
+    font-size: 9px;
+    line-height: 1.45;
+    letter-spacing: 0.2px;
+    padding: 9px 7px 6px;
+  }
+}

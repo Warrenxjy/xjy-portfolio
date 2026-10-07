@@ -1,0 +1,246 @@
+[
+  {
+    "category": "creative-shorts",
+    "category_name": "创意短片",
+    "slug": "grad-creative",
+    "title": "毕业视频：《你想变成什么样的人》",
+    "roles": "导演 / 摄影 / 剪辑",
+    "cover": "01.jpg",
+    "video_link": "https://www.xinpianchang.com/a13466608?from=UserProfile",
+    "order": [
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg",
+      "07.jpg",
+      "08.jpg",
+      "09.jpg"
+    ],
+    "layout": "default",
+    "note": "本片获得第十六届粤光杯最佳摄剪"
+  },
+  {
+    "category": "creative-shorts",
+    "category_name": "创意短片",
+    "slug": "dgut-f1",
+    "title": "莞工F1",
+    "roles": "导演 / 摄影 / 剪辑",
+    "cover": "01.jpg",
+    "video_link": "https://pub-905990f8d20f4c0585becde70460ab8c.r2.dev/duanpian/dgutf1.mp4",
+    "order": [
+      "02.jpg",
+      "03.jpg",
+      "09.jpg",
+      "08.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg",
+      "07.jpg"
+    ],
+    "layout": "r235"
+  },
+  {
+    "category": "creative-shorts",
+    "category_name": "创意短片",
+    "slug": "dream-fish",
+    "title": "梦里我变成了一条鱼",
+    "roles": "灯光指导",
+    "cover": "01.jpg",
+    "video_link": null,
+    "order": [
+      "02.jpg",
+      "03.jpg",
+      "07.jpg",
+      "05.jpg",
+      "06.jpg",
+      "04.jpg"
+    ],
+    "layout": "r235"
+  },
+  {
+    "category": "aigc-works",
+    "category_name": "AIGC 作品",
+    "slug": "mandela-records",
+    "title": "曼德拉记录",
+    "roles": "编导",
+    "cover": "06.jpg",
+    "video_link": null,
+    "order": [
+      "07.jpg",
+      "01.jpg",
+      "08.jpg",
+      "09.jpg",
+      "11.jpg",
+      "10.jpg",
+      "05.jpg",
+      "04.jpg",
+      "03.jpg",
+      "12.jpg",
+      "02.jpg",
+      "13.jpg"
+    ],
+    "layout": "cols-3"
+  },
+  {
+    "category": "aigc-works",
+    "category_name": "AIGC 作品",
+    "slug": "case-seat",
+    "title": "案发请入座",
+    "roles": "编导",
+    "cover": "04.jpg",
+    "video_link": null,
+    "order": [
+      "02.jpg",
+      "03.jpg",
+      "01.jpg",
+      "05.jpg",
+      "06.jpg",
+      "07.jpg",
+      "08.jpg",
+      "09.jpg",
+      "10.jpg"
+    ],
+    "layout": "cols-3"
+  },
+  {
+    "category": "drama-films",
+    "category_name": "剧情片创作",
+    "slug": "lengshan",
+    "title": "冷杉",
+    "roles": "导演 / 摄影 / 剪辑 / 调色",
+    "cover": "01.jpg",
+    "video_link": "https://www.xinpianchang.com/a13812339",
+    "order": [
+      "03.jpg",
+      "10.jpg",
+      "08.jpg",
+      "06.jpg",
+      "07.jpg",
+      "14.jpg",
+      "09.jpg",
+      "02.jpg",
+      "05.jpg",
+      "12.jpg",
+      "11.jpg",
+      "13.jpg"
+    ],
+    "layout": "cols-3 r235",
+    "note": "本片受到广东南光影视器材有限公司 / 深圳谛听声学科技有限公司赞助支持"
+  },
+  {
+    "category": "drama-films",
+    "category_name": "剧情片创作",
+    "slug": "tudi-diedie",
+    "title": "土地嗲嗲，天上要怎么走",
+    "roles": "机灯组 / DIT",
+    "cover": "04.jpg",
+    "video_link": null,
+    "order": [
+      "07.jpg",
+      "05.jpg",
+      "09.jpg",
+      "13.jpg",
+      "12.jpg",
+      "11.jpg",
+      "06.jpg",
+      "03.jpg",
+      "14.jpg",
+      "01.jpg",
+      "08.jpg",
+      "10.jpg"
+    ],
+    "layout": "cols-4",
+    "note": "本片入围亚洲国际青年电影节、澳门国际微电影节"
+  },
+  {
+    "category": "drama-films",
+    "category_name": "剧情片创作",
+    "slug": "niaoniao-chuiyan",
+    "title": "袅袅炊烟",
+    "roles": "摄影指导",
+    "cover": "12.jpg",
+    "video_link": "https://www.xinpianchang.com/a13678837?from=UserProfile",
+    "order": [
+      "01.jpg",
+      "10.jpg",
+      "09.jpg",
+      "11.jpg",
+      "08.jpg",
+      "07.jpg",
+      "06.jpg",
+      "03.jpg",
+      "02.jpg"
+    ],
+    "layout": "cols-3"
+  },
+  {
+    "category": "drama-films",
+    "category_name": "剧情片创作",
+    "slug": "yupai-siyu",
+    "title": "余牌思语",
+    "roles": "执行导演",
+    "cover": "01.jpg",
+    "video_link": null,
+    "order": [
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg"
+    ],
+    "layout": "r235"
+  },
+  {
+    "category": "commercial",
+    "category_name": "商业宣传",
+    "slug": "shandian",
+    "title": "闪电SPECIALIZED",
+    "roles": "导演 / 摄影 / 剪辑",
+    "cover": "01.jpg",
+    "video_link": "https://pub-905990f8d20f4c0585becde70460ab8c.r2.dev/shangye/specialized.mp4",
+    "order": [
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg"
+    ],
+    "layout": "default"
+  },
+  {
+    "category": "commercial",
+    "category_name": "商业宣传",
+    "slug": "bookoo",
+    "title": "bookoo 不苦咖啡",
+    "roles": "摄影 / 灯光 / 剪辑",
+    "cover": null,
+    "video_link": "https://pub-905990f8d20f4c0585becde70460ab8c.r2.dev/shangye/bookoo.mp4",
+    "order": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg"
+    ],
+    "layout": "still-row"
+  },
+  {
+    "category": "commercial",
+    "category_name": "商业宣传",
+    "slug": "yuyun-nanyue",
+    "title": "广东广播电视台“育孕南粤”系列主题片",
+    "roles": "分镜设计 / 执行导演",
+    "cover": "07.jpg",
+    "video_link": null,
+    "order": [
+      "09.jpg",
+      "10.jpg",
+      "02.jpg",
+      "08.jpg",
+      "04.jpg",
+      "01.jpg",
+      "03.jpg",
+      "05.jpg"
+    ],
+    "layout": "default"
+  }
+]

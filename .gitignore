@@ -1,0 +1,35 @@
+# 项目数据 / 记忆（不上传）
+.workbuddy/
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# 编辑器 / 系统
+.vscode/
+*.swp
+
+# 依赖与临时文件
+node_modules/
+npm-debug.log*
+
+# ---------------------------------------------------------
+# 未被引用的重复素材目录（早期复制脚本留下的中文名副本）
+# 页面只引用英文 slug 目录，这 13 个目录共约 551MB，不上传 GitHub
+# 确认无误后可自行删除，能省下 551MB 磁盘空间
+# ---------------------------------------------------------
+assets/works/aigc-works/曼德拉记录/
+assets/works/aigc-works/案发请入座/
+assets/works/commercial/bookoo不苦咖啡/
+assets/works/commercial/育孕南粤/
+assets/works/commercial/闪电/
+assets/works/creative-shorts/graduation/
+assets/works/creative-shorts/莞工F1/
+assets/works/drama-films/grad-drama/
+assets/works/drama-films/graduation/
+assets/works/drama-films/余牌思语/
+assets/works/drama-films/冷杉/
+assets/works/drama-films/土地嗲嗲/
+assets/works/drama-films/袅袅炊烟/
