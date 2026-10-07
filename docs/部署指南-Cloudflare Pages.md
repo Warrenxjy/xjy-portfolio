@@ -22,8 +22,9 @@
 
 1. 浏览器打开 **https://github.com/new**
    （或：GitHub 首页右上角点 **+** → **New repository**）
-2. **Repository name** 填：`xuejiayao-portfolio`
-3. 下面选 **Public**（公开）
+2. **Repository name** 填：`xjy-portfolio`
+3. 下面选 **Public**（公开）或 **Private**（私有）都可以 —— **Cloudflare Pages 两种都支持**，不影响部署。
+   建议选 Public：作品集源码没什么可藏的，公开还能白嫖一份云端备份。
 4. ⚠️ 页面下半部分那几个复选框 —— **全都不要勾**：
    - ❌ Add a README file
    - ❌ Add .gitignore
@@ -33,7 +34,7 @@
 
 点完会跳到一个新页面，中间有一块灰色代码区，里面写着地址，形如：
 ```
-https://github.com/你的用户名/xuejiayao-portfolio.git
+https://github.com/你的用户名/xjy-portfolio.git
 ```
 **把「你的用户名」那部分记住**（就是你 GitHub 的账号名），第 2 步要用。
 
@@ -56,11 +57,16 @@ https://github.com/你的用户名/xuejiayao-portfolio.git
 5. 选好后点 **Add Repository**
 6. 如果左下角提示有未提交的改动：Summary 随便填「初次上传」，点 **Commit to main**
    （如果你之前已经让我提交过，这里可能是空的，空的就跳过这步）
-7. 点顶部中间的 **Publish repository**
-8. 弹窗里 **去掉 "Keep this code private" 的勾**（这样才是 Public），名字保持 `xuejiayao-portfolio`
+7. 如果之前那个仓库被删过，顶部中间会重新出现 **Publish repository** 按钮 —— 点它
+8. 弹窗里三项：
+   - **Name** 填 `xjy-portfolio`
+   - **Description** 可留空
+   - **去掉 "Keep this code private" 的勾**（这样是 Public；想私有就留着，Cloudflare 同样支持）
 9. 点 **Publish Repository**，等它转圈（46MB，快的话十几秒）
 
-✅ **成功标志**：回浏览器刷新 `github.com/你的用户名/xuejiayao-portfolio`，能看到 `index.html`、`assets`、`pages` 这些文件列表。
+✅ **成功标志**：回浏览器刷新 `github.com/Warrenxjy/xjy-portfolio`，能看到 `index.html`、`assets`、`pages` 这些文件列表。
+
+> ⚠️ 如果 Publish 之后又弹出「repository does not seem to exist」：说明本地还残留着旧仓库地址。在软件里点 **Repository → Repository settings... → Remote**，把 Primary remote 的地址删掉，关掉再打开就能重新 Publish 了。
 
 ---
 
@@ -101,13 +107,13 @@ cd /Users/shuozaiyao/WorkBuddy/2026-08-23-00-39-39
 
 **第 2 条**（告诉 git 仓库在哪 —— 把 `你的用户名` 换成你刚才记下的 GitHub 用户名）：
 ```bash
-git remote add origin https://github.com/你的用户名/xuejiayao-portfolio.git
+git remote add origin https://github.com/你的用户名/xjy-portfolio.git
 ```
 > 比如你的用户名是 `jiayao`，这条就写成：
-> `git remote add origin https://github.com/jiayao/xuejiayao-portfolio.git`
+> `git remote add origin https://github.com/jiayao/xjy-portfolio.git`
 > 没有任何输出 = 成功了。
 > 如果报错 `error: remote origin already exists`，改成执行：
-> `git remote set-url origin https://github.com/你的用户名/xuejiayao-portfolio.git`
+> `git remote set-url origin https://github.com/你的用户名/xjy-portfolio.git`
 
 **第 3 条**（确认分支名）：
 ```bash
@@ -131,7 +137,7 @@ git push -u origin main
 ```
 Enumerating objects: 152, done.
 ...
-To https://github.com/你的用户名/xuejiayao-portfolio.git
+To https://github.com/你的用户名/xjy-portfolio.git
  * [new branch]      main -> main
 ```
 然后刷新 GitHub 页面，能看到文件列表就成了。
@@ -167,12 +173,12 @@ To https://github.com/你的用户名/xuejiayao-portfolio.git
 3. **Create application** → 选 **Pages** 标签 → **Connect to Git**
 4. 点 **Connect GitHub** → 授权 Cloudflare 访问你的 GitHub
    - 如果仓库没出现在列表里：点 "Only select repositories" 旁边的 **Edit repositories**，把刚才那个仓库加进去
-5. 选中 `xuejiayao-portfolio` → **Begin setup**
+5. 选中 `xjy-portfolio` → **Begin setup**
 6. 构建配置**照抄这一页**：
 
 | 字段 | 填什么 |
 |---|---|
-| Project name | `xuejiayao-portfolio`（会变成网址前缀） |
+| Project name | `xjy-portfolio`（会变成网址前缀） |
 | Production branch | `main` |
 | Framework preset | **None** |
 | Build command | **留空**（纯静态站点不需要构建） |
@@ -183,7 +189,7 @@ To https://github.com/你的用户名/xuejiayao-portfolio.git
 
 第一次部署大概 1–2 分钟。完成后会给一个网址：
 ```
-https://xuejiayao-portfolio.pages.dev
+https://xjy-portfolio.pages.dev
 ```
 这个链接现在就能发给任何人看了，手机上也能直接打开。
 
